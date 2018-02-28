@@ -14,6 +14,12 @@
 		18F62FB02043F94B0060231A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F62FAE2043F94B0060231A /* LaunchScreen.storyboard */; };
 		18F62FBB2043F94B0060231A /* dateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62FBA2043F94B0060231A /* dateTests.swift */; };
 		18F62FC62043F94B0060231A /* dateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62FC52043F94B0060231A /* dateUITests.swift */; };
+		18F62FD72043F9C40060231A /* アートボード 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F62FD32043F9C40060231A /* アートボード 2.png */; };
+		18F62FD82043F9C40060231A /* アートボード 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F62FD42043F9C40060231A /* アートボード 3.png */; };
+		18F62FD92043F9C40060231A /* アートボード 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F62FD52043F9C40060231A /* アートボード 4.png */; };
+		18F62FDA2043F9C40060231A /* アートボード 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F62FD62043F9C40060231A /* アートボード 1.png */; };
+		18F62FDC2043FD6A0060231A /* futureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62FDB2043FD6A0060231A /* futureViewController.swift */; };
+		18F62FDE2043FDAC0060231A /* togoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62FDD2043FDAC0060231A /* togoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		18F62FC12043F94B0060231A /* dateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F62FC52043F94B0060231A /* dateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateUITests.swift; sourceTree = "<group>"; };
 		18F62FC72043F94B0060231A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F62FD32043F9C40060231A /* アートボード 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アートボード 2.png"; sourceTree = "<group>"; };
+		18F62FD42043F9C40060231A /* アートボード 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アートボード 3.png"; sourceTree = "<group>"; };
+		18F62FD52043F9C40060231A /* アートボード 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アートボード 4.png"; sourceTree = "<group>"; };
+		18F62FD62043F9C40060231A /* アートボード 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アートボード 1.png"; sourceTree = "<group>"; };
+		18F62FDB2043FD6A0060231A /* futureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = futureViewController.swift; sourceTree = "<group>"; };
+		18F62FDD2043FDAC0060231A /* togoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = togoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +109,18 @@
 		18F62FA42043F94B0060231A /* date */ = {
 			isa = PBXGroup;
 			children = (
+				18F62FD62043F9C40060231A /* アートボード 1.png */,
+				18F62FD32043F9C40060231A /* アートボード 2.png */,
+				18F62FD42043F9C40060231A /* アートボード 3.png */,
+				18F62FD52043F9C40060231A /* アートボード 4.png */,
 				18F62FA52043F94B0060231A /* AppDelegate.swift */,
 				18F62FA72043F94B0060231A /* ViewController.swift */,
 				18F62FA92043F94B0060231A /* Main.storyboard */,
+				18F62FDB2043FD6A0060231A /* futureViewController.swift */,
 				18F62FAC2043F94B0060231A /* Assets.xcassets */,
 				18F62FAE2043F94B0060231A /* LaunchScreen.storyboard */,
 				18F62FB12043F94B0060231A /* Info.plist */,
+				18F62FDD2043FDAC0060231A /* togoViewController.swift */,
 			);
 			path = date;
 			sourceTree = "<group>";
@@ -234,6 +252,10 @@
 			files = (
 				18F62FB02043F94B0060231A /* LaunchScreen.storyboard in Resources */,
 				18F62FAD2043F94B0060231A /* Assets.xcassets in Resources */,
+				18F62FD92043F9C40060231A /* アートボード 4.png in Resources */,
+				18F62FD72043F9C40060231A /* アートボード 2.png in Resources */,
+				18F62FDA2043F9C40060231A /* アートボード 1.png in Resources */,
+				18F62FD82043F9C40060231A /* アートボード 3.png in Resources */,
 				18F62FAB2043F94B0060231A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +283,8 @@
 			files = (
 				18F62FA82043F94B0060231A /* ViewController.swift in Sources */,
 				18F62FA62043F94B0060231A /* AppDelegate.swift in Sources */,
+				18F62FDC2043FD6A0060231A /* futureViewController.swift in Sources */,
+				18F62FDE2043FDAC0060231A /* togoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
