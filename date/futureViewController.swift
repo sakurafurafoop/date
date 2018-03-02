@@ -22,7 +22,7 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
     }
     @IBOutlet var table:UITableView!//togoを表示させるtableview
     var togoArray:[String] = []//togoを実際に入れる配列
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self

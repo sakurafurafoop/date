@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tct-PX-Rni">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,31 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="date" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="アートボード 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="bnN-vv-w6o">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="TT6-41-hRa"/>
-                    <connections>
-                        <segue destination="OES-MB-oqi" kind="push" id="nHX-9Y-xoK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="588" y="139"/>
-        </scene>
         <!--Future View Controller-->
         <scene sceneID="igf-zh-Gi1">
             <objects>
@@ -67,10 +42,13 @@
                         <viewLayoutGuide key="safeArea" id="wdI-CP-fgr"/>
                     </view>
                     <navigationItem key="navigationItem" id="xby-2j-eF2"/>
+                    <connections>
+                        <outlet property="table" destination="jBX-cR-lc2" id="Y3Y-ba-3uv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gh5-cJ-vOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="131"/>
+            <point key="canvasLocation" x="1758" y="116"/>
         </scene>
         <!--Togo View Controller-->
         <scene sceneID="f4r-mQ-2QI">
@@ -98,18 +76,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3P-KE-M0h">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTogo" destination="CYx-U2-xow" eventType="touchUpInside" id="huA-xx-9QB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="TMd-Pw-sZA"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uZH-T7-AsG"/>
+                    <connections>
+                        <outlet property="togoTextField" destination="FDf-hg-O9E" id="MhZ-KT-ocN"/>
+                        <outlet property="whenTextField" destination="euq-Cs-0Bb" id="tRI-Ce-mGr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIv-D4-3Gd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2215.1999999999998" y="138.98050974512745"/>
+            <point key="canvasLocation" x="2527" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7mY-1B-w9P">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tct-PX-Rni" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="KDi-pp-nDU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fyv-b7-C6y">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OES-MB-oqi" kind="relationship" relationship="rootViewController" id="yte-ao-MBG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Wz-ew-Zu0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="914" y="117"/>
         </scene>
     </scenes>
     <resources>
-        <image name="アートボード 1.png" width="750" height="1334"/>
         <image name="アートボード 2.png" width="750" height="1334"/>
         <image name="アートボード 4.png" width="750" height="1334"/>
     </resources>
