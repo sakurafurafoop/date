@@ -41,9 +41,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="wdI-CP-fgr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xby-2j-eF2"/>
+                    <navigationItem key="navigationItem" id="xby-2j-eF2">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="dSb-2y-dC1" userLabel="Add">
+                            <connections>
+                                <segue destination="CYx-U2-xow" kind="showDetail" identifier="nextView" action="showViewController:sender:" id="Erx-pr-lgN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="jBX-cR-lc2" id="Y3Y-ba-3uv"/>
+                        <segue destination="CYx-U2-xow" kind="presentation" id="0Bb-Fd-E4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gh5-cJ-vOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -122,4 +129,7 @@
         <image name="アートボード 2.png" width="750" height="1334"/>
         <image name="アートボード 4.png" width="750" height="1334"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Erx-pr-lgN"/>
+    </inferredMetricsTieBreakers>
 </document>

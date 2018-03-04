@@ -9,6 +9,35 @@
 import UIKit
 
 class futureViewController: togoViewController, UITableViewDataSource,UITableViewDelegate{
+    @IBOutlet var table: UITableView!//togoを表示させる配列
+    var togoArray:[String] = []//togoを実際に入れる配列
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        table.dataSource = self
+        togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
+        table.reloadData()
+        
+        //もしuserdefaultsが空っぽである場合
+        if  userdefaults.object(forKey: "togoTitle") != nil{
+            //togoArray = saveTogoTitle.object(forKey: "todoTitle") as! [String]
+        }
+        table.delegate = self
+        table.dataSource = self
+        self.view.addSubview(table)
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        togoArray = userdefaults.object(forKey: "todoTitle") as! [String]
+        table.reloadData()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     //tableViewのcellの数を決める
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return togoArray.count//配列の要素の数がセルの数になる
@@ -20,27 +49,7 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
         cell?.textLabel?.text = togoArray[indexPath.row]
         return cell!
     }
-    @IBOutlet var table:UITableView!//togoを表示させるtableview
-    var togoArray:[String] = []//togoを実際に入れる配列
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        table.dataSource = self
-        togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
-        table.reloadData()
-        if  userdefaults.object(forKey: "togoTitle") != nil{
-            //togoArray = saveTodoTitle.object(forKey: "todoTitle") as! [String]
-        }
-        table.delegate = self
-        table.dataSource = self
-        self.view.addSubview(table)
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     //削除する
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

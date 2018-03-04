@@ -14,6 +14,7 @@ class togoViewController: UIViewController{
     //@IBOutlet var whenTextField: UITextField!//whenを入れるTextField
     var togoSaveArray:[String] = []//todoを表示させる配列
     //var whenSaveArray:[String] = []//whenを表示させる配列
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if userdefaults.object(forKey: "togoTitle") != nil{
