@@ -10,18 +10,25 @@ import UIKit
 
 class futureViewController: togoViewController, UITableViewDataSource,UITableViewDelegate{
     @IBOutlet var table: UITableView!//togoを表示させる配列
-    var togoArray:[String] = []//togoを実際に入れる配列
+    var togoArray: [String] = []//togoを実際に入れる配列
+    var whenArray: [String] = []//whenを保存に入れる配列
     
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
-        togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
+        if userdefaults.object(forKey: "togoTitle") != nil{
+            togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
+        }
+        
+        if userdefaults.object(forKey: "whenTitle") != nil{
+             whenArray = userdefaults.object(forKey: "whenTitle") as! [String]//whenArrayにuserdefaultsに入っている配列を代入する
+        }
         table.reloadData()
         
         //もしuserdefaultsが空っぽである場合
-        if  userdefaults.object(forKey: "togoTitle") != nil{
-            //togoArray = saveTogoTitle.object(forKey: "todoTitle") as! [String]
-        }
+//        if  userdefaults.object(forKey: "togoTitle") != nil{
+//            //togoArray = saveTogoTitle.object(forKey: "todoTitle") as! [String]
+//        }
         table.delegate = self
         table.dataSource = self
         self.view.addSubview(table)
@@ -29,7 +36,12 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        togoArray = userdefaults.object(forKey: "todoTitle") as! [String]
+        if userdefaults.object(forKey: "togoTitle") != nil{
+            togoArray = userdefaults.object(forKey: "togoTitle") as! [String]
+        }
+        if userdefaults.object(forKey: "whenTitle") != nil{
+            whenArray = userdefaults.object(forKey: "whenTitle") as! [String]
+        }
         table.reloadData()
     }
     
@@ -58,6 +70,18 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         userdefaults.set(togoArray, forKey: "togoTitle")//
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTogoViewController" {
+            let secondViewController = segue.destination as! togoViewController
+            //TodoViewController.todoArray[String] = sender as! [String : String]
+            //secondViewController.todoTextField.text = todoArray[indexTest]
+            //print(indexTest)
+            //print(todoArray[indexTest])
+            //self.hyouzi()
+            //  secondViewController.todoTextField.text = indexTest(String)
+        }
     }
     /*
     // MARK: - Navigation

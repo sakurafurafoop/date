@@ -11,9 +11,9 @@ import UIKit
 class togoViewController: UIViewController{
     var userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     @IBOutlet var togoTextField: UITextField!//togoを入れるTextField
-    //@IBOutlet var whenTextField: UITextField!//whenを入れるTextField
-    var togoSaveArray:[String] = []//todoを表示させる配列
-    //var whenSaveArray:[String] = []//whenを表示させる配列
+    @IBOutlet var whenTextField: UITextField!//whenを入れるTextField
+    var togoSaveArray:[String?] = []//todoを表示させる配列
+    var whenSaveArray:[String] = []//whenを表示させる配列
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,9 @@ class togoViewController: UIViewController{
             togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
         }
         
-        /*if userdefaults.object(forKey: "whenTitle") != nil{
+        if userdefaults.object(forKey: "whenTitle") != nil{
             whenSaveArray = userdefaults.object(forKey: "whenTitle") as! [String]
-        }*/
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -35,8 +35,8 @@ class togoViewController: UIViewController{
     @IBAction func saveTogo(){
         togoSaveArray.append(togoTextField.text!)
         userdefaults.set(togoSaveArray, forKey: "togoTitle")//
-        //whenSaveArray.append(whenTextField.text!)
-       // userdefaults.set(whenSaveArray, forKey: "whenTitle")
+        whenSaveArray.append(whenTextField.text!)
+        userdefaults.set(whenSaveArray, forKey: "whenTitle")
         self.navigationController?.popViewController(animated: true)
     }
     /*
