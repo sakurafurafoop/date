@@ -44,13 +44,13 @@
                     <navigationItem key="navigationItem" id="xby-2j-eF2">
                         <barButtonItem key="rightBarButtonItem" title="+" id="dSb-2y-dC1" userLabel="Add">
                             <connections>
-                                <segue destination="CYx-U2-xow" kind="showDetail" id="CCy-MM-ww8"/>
+                                <segue destination="CYx-U2-xow" kind="show" id="13b-PX-kMo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="jBX-cR-lc2" id="b3J-Yo-LLy"/>
-                        <segue destination="CYx-U2-xow" kind="presentation" id="zYd-Gc-UJf"/>
+                        <segue destination="CYx-U2-xow" kind="showDetail" identifier="toTogoViewController" id="dFw-4d-3qO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gh5-cJ-vOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -84,7 +84,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3P-KE-M0h">
-                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <rect key="frame" x="164" y="599" width="46" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -107,7 +107,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="TMd-Pw-sZA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uZH-T7-AsG"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="qiZ-uj-vhO" id="gLV-HF-ueF"/>
                         <outlet property="togoTextField" destination="FDf-hg-O9E" id="MhZ-KT-ocN"/>
@@ -142,6 +143,6 @@
         <image name="アートボード 4.png" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zYd-Gc-UJf"/>
+        <segue reference="dFw-4d-3qO"/>
     </inferredMetricsTieBreakers>
 </document>

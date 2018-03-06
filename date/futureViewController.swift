@@ -16,6 +16,7 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
+        
         if userdefaults.object(forKey: "togoTitle") != nil{
             togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
         }
@@ -72,9 +73,14 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
         userdefaults.set(togoArray, forKey: "togoTitle")//
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        //  indexTest = indexPath.row
+        self.performSegue(withIdentifier: "toTogoViewController", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTogoViewController" {
-            let secondViewController = segue.destination as! togoViewController
+            _ = segue.destination as! togoViewController
             //TodoViewController.todoArray[String] = sender as! [String : String]
             //secondViewController.todoTextField.text = todoArray[indexTest]
             //print(indexTest)
