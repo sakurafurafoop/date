@@ -8,15 +8,19 @@
 
 import UIKit
 
-class futureViewController: togoViewController, UITableViewDataSource,UITableViewDelegate{
+class futureViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate{
     @IBOutlet var table: UITableView!//togoを表示させる配列
     var togoArray: [String] = []//togoを実際に入れる配列
     var whenArray: [String] = []//whenを保存に入れる配列
+    var mozi:String!
+    var hensyuu: String!
+    let userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     
+    //var mozi:String = "hamu"
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
-        
+        table.delegate = self
         if userdefaults.object(forKey: "togoTitle") != nil{
             togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
         }
@@ -30,15 +34,21 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
 //        if  userdefaults.object(forKey: "togoTitle") != nil{
 //            //togoArray = saveTogoTitle.object(forKey: "todoTitle") as! [String]
 //        }
-        table.delegate = self
-        table.dataSource = self
+       
         self.view.addSubview(table)
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        table.dataSource = self
+        table.delegate = self
         if userdefaults.object(forKey: "togoTitle") != nil{
             togoArray = userdefaults.object(forKey: "togoTitle") as! [String]
+            //var togo = togoArray as! String
+            
+            
         }
         if userdefaults.object(forKey: "whenTitle") != nil{
             whenArray = userdefaults.object(forKey: "whenTitle") as! [String]
@@ -58,9 +68,10 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
     
     //cellに配列の要素を表示させるメソッド
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = togoArray[indexPath.row]
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",for:indexPath)
+        _ = togoArray[indexPath.row]
+        cell.textLabel?.text = togoArray[indexPath.row]
+        return cell
     }
     
     
@@ -74,19 +85,20 @@ class futureViewController: togoViewController, UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        //  indexTest = indexPath.row
-        self.performSegue(withIdentifier: "toTogoViewController", sender: nil)
+        mozi = togoArray[indexPath.row]
+        self.performSegue(withIdentifier: "toTogoViewController", sender: self.mozi)
+        
+        table.deselectRow(at:indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toTogoViewController" {
-            _ = segue.destination as! togoViewController
-            //TodoViewController.todoArray[String] = sender as! [String : String]
-            //secondViewController.todoTextField.text = todoArray[indexTest]
-            //print(indexTest)
-            //print(todoArray[indexTest])
-            //self.hyouzi()
-            //  secondViewController.todoTextField.text = indexTest(String)
+        _ = segue.destination as! togoViewController
+        togoViewController.hensyuu = sender as? String
+            //togoViewController.togo = sender as String
+        
+        
+        func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+            return true
         }
     }
     /*
