@@ -8,10 +8,11 @@
 
 import UIKit
 
-class togoViewController: UIViewController{
+class togoViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     var userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     @IBOutlet var togoTextField: UITextField!//togoを入れるTextField
     @IBOutlet var whenTextField: UITextField!//whenを入れるTextField
+    @IBOutlet var imageView:UIImageView!
     var togoSaveArray:[String?] = []//todoを表示させる配列
     var whenSaveArray:[String] = []//whenを表示させる配列
     
@@ -38,6 +39,17 @@ class togoViewController: UIViewController{
         whenSaveArray.append(whenTextField.text!)
         userdefaults.set(whenSaveArray, forKey: "whenTitle")
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func openAlbum(){
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            picker.allowsEditing = true
+            
+            present(picker, animated: true,completion: nil)
+        }
     }
     /*
     // MARK: - Navigation

@@ -91,19 +91,32 @@
                                     <action selector="saveTogo" destination="CYx-U2-xow" eventType="touchUpInside" id="huA-xx-9QB"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qiZ-uj-vhO">
+                                <rect key="frame" x="67" y="97" width="241" height="225"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bre-1q-C6n">
+                                <rect key="frame" x="164" y="194" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="openAlbum" destination="CYx-U2-xow" eventType="touchUpInside" id="h4d-jc-avL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="TMd-Pw-sZA"/>
                     </view>
                     <navigationItem key="navigationItem" id="uZH-T7-AsG"/>
                     <connections>
+                        <outlet property="imageView" destination="qiZ-uj-vhO" id="gLV-HF-ueF"/>
                         <outlet property="togoTextField" destination="FDf-hg-O9E" id="MhZ-KT-ocN"/>
                         <outlet property="whenTextField" destination="euq-Cs-0Bb" id="lqB-94-dLH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIv-D4-3Gd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2527" y="116"/>
+            <point key="canvasLocation" x="2525.5999999999999" y="115.59220389805098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7mY-1B-w9P">
