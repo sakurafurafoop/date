@@ -8,13 +8,13 @@
 
 import UIKit
 
-class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate{
+class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITextFieldDelegate,UINavigationControllerDelegate{
     var userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     @IBOutlet var togoTextField: UITextField!//togoを入れるTextField
     //@IBOutlet var togoText: UILabel!//
     @IBOutlet var whenTextField: UITextField!//whenを入れるTextField
     @IBOutlet var imageView:UIImageView!
-    var togoSaveArray:[String?] = []//todoを表示させる配列
+    var togoSaveArray:[String] = []//todoを表示させる配列
     var whenSaveArray:[String] = []//whenを表示させる配列
     var hensyuu: String!
     //var togoData = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -69,7 +69,7 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             let picker = UIImagePickerController()
             picker.sourceType = .photoLibrary
-            picker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            picker.delegate = self
             picker.allowsEditing = true
             present(picker, animated: true,completion: nil)
         }

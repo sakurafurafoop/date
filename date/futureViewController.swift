@@ -13,20 +13,20 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
     var togoArray: [String] = []//togoを実際に入れる配列
     var whenArray: [String] = []//whenを保存に入れる配列
     var mozi:String!
-    var hensyuu: String!
-    let userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
+    var hensyuu: Double!
+    let Userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     
     //var mozi:String = "hamu"
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
         table.delegate = self
-        if userdefaults.object(forKey: "togoTitle") != nil{
-            togoArray = userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
+        if Userdefaults.object(forKey: "togoTitle") != nil{
+            togoArray = Userdefaults.object(forKey: "togoTitle") as! [String]//togoArrayにuserdefaultsに入っている配列を代入する
         }
         
-        if userdefaults.object(forKey: "whenTitle") != nil{
-             whenArray = userdefaults.object(forKey: "whenTitle") as! [String]//whenArrayにuserdefaultsに入っている配列を代入する
+        if Userdefaults.object(forKey: "whenTitle") != nil{
+             whenArray = Userdefaults.object(forKey: "whenTitle") as! [String]//whenArrayにuserdefaultsに入っている配列を代入する
         }
         table.reloadData()
         
@@ -44,14 +44,14 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
         
         table.dataSource = self
         table.delegate = self
-        if userdefaults.object(forKey: "togoTitle") != nil{
-            togoArray = userdefaults.object(forKey: "togoTitle") as! [String]
+        if Userdefaults.object(forKey: "togoTitle") != nil{
+            togoArray = Userdefaults.object(forKey: "togoTitle") as! [String]
             //var togo = togoArray as! String
             
             
         }
-        if userdefaults.object(forKey: "whenTitle") != nil{
-            whenArray = userdefaults.object(forKey: "whenTitle") as! [String]
+        if Userdefaults.object(forKey: "whenTitle") != nil{
+            whenArray = Userdefaults.object(forKey: "whenTitle") as! [String]
         }
         table.reloadData()
     }
@@ -81,7 +81,7 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
             togoArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        userdefaults.set(togoArray, forKey: "togoTitle")//
+        Userdefaults.set(togoArray, forKey: "togoTitle")//
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -93,7 +93,7 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         _ = segue.destination as! togoViewController
-        togoViewController.hensyuu = sender as? String
+        togoViewController().hensyuu = sender as? String
             //togoViewController.togo = sender as String
         
         
