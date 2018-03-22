@@ -17,6 +17,7 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     var togoSaveArray:[String] = []//todoを表示させる配列
     var whenSaveArray:[String] = []//whenを表示させる配列
     var hensyuu: String!
+    
     //var togoData = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
@@ -24,15 +25,18 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     override func viewDidLoad() {
         super.viewDidLoad()
         if userdefaults.object(forKey: "togoTitle") == nil{
-            //return
+            print("nakaminaiyo")
         }else{
+            print(hensyuu)
             togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
+            togoTextField.text = userdefaults.object(forKey: "togoTitle") as? String
         }
         
         togoTextField.delegate = self
-        togoTextField.text = userdefaults.object(forKey: "togoTitle") as? String
+        togoTextField.text = hensyuu
         
         if hensyuu != nil{
+            print("hensyuu")
             togoTextField.text = hensyuu
         }
         
@@ -50,19 +54,23 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     
     @IBAction func saveTogo(){
         if hensyuu == nil{
+            //print(hensyuu)
             togoSaveArray.append(togoTextField.text!)
             userdefaults.set(togoSaveArray, forKey: "togoTitle")//
             whenSaveArray.append(whenTextField.text!)
             userdefaults.set(whenSaveArray, forKey: "whenTitle")
+            self.navigationController?.popViewController(animated: true)
         }else if hensyuu != nil{
+            //print(hensyuu)
             let index = togoSaveArray.index(of: hensyuu)
-            togoSaveArray.remove(at: index!)
+            togoSaveArray.remove(at: (index)!)
             togoSaveArray.insert(togoTextField.text!, at: index!)
             userdefaults.set(togoSaveArray, forKey: "togoTitle")
-            
+            self.dismiss(animated: true, completion: nil)
+            //self.navigationController?.popViewController(animated: true)
         }
         
-        self.navigationController?.popViewController(animated: true)
+       
     }
     
     @IBAction func openAlbum(){

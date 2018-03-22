@@ -122,7 +122,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="qiZ-uj-vhO" id="WZX-HB-eZZ"/>
-                        <outlet property="togoTextField" destination="FDf-hg-O9E" id="MhZ-KT-ocN"/>
+                        <outlet property="togoTextField" destination="FDf-hg-O9E" id="L1z-2g-VWV"/>
                         <outlet property="whenTextField" destination="euq-Cs-0Bb" id="lqB-94-dLH"/>
                     </connections>
                 </viewController>

@@ -13,7 +13,7 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
     var togoArray: [String] = []//togoを実際に入れる配列
     var whenArray: [String] = []//whenを保存に入れる配列
     var mozi:String!
-    var hensyuu: Double!
+    var hensyuu: String!
     let Userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     
     //var mozi:String = "hamu"
@@ -85,21 +85,25 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        mozi = togoArray[indexPath.row]
+        hensyuu = togoArray[indexPath.row]
+        
+        
         self.performSegue(withIdentifier: "toTogoViewController", sender: self.mozi)
         
         table.deselectRow(at:indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        _ = segue.destination as! togoViewController
-        togoViewController().hensyuu = sender as? String
+        let Togoviewcontroller:togoViewController = segue.destination as! togoViewController
+        Togoviewcontroller.hensyuu = hensyuu
+        //mozi = hensyuu
+        print(hensyuu)
             //togoViewController.togo = sender as String
+    }
         
-        
-        func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
-        }
+        
     }
     /*
     // MARK: - Navigation
