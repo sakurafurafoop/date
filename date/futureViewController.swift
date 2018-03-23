@@ -14,6 +14,9 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
     var whenArray: [String] = []//whenを保存に入れる配列
     var mozi:String!
     var hensyuu: String!
+    var cellNumber:Int!
+    var isInfoEditing:Bool = false
+    
     let Userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
     
     //var mozi:String = "hamu"
@@ -41,7 +44,7 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        isInfoEditing = false
         table.dataSource = self
         table.delegate = self
         if Userdefaults.object(forKey: "togoTitle") != nil{
@@ -84,18 +87,23 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
         Userdefaults.set(togoArray, forKey: "togoTitle")//
     }
     
+    
+    //セルがタップされた時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        hensyuu = togoArray[indexPath.row]
-        
-        
+        //hensyuu = togoArray[indexPath.row]
+        cellNumber = indexPath.row
+        isInfoEditing = true
         self.performSegue(withIdentifier: "toTogoViewController", sender: self.mozi)
-        
         table.deselectRow(at:indexPath, animated: true)
     }
     
+    //int型のcellNumberを送る
+    //bool型のisInfoEditingを送る
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let Togoviewcontroller:togoViewController = segue.destination as! togoViewController
-        Togoviewcontroller.hensyuu = hensyuu
+//        Togoviewcontroller.hensyuu = hensyuu
+        Togoviewcontroller.cellNumber = cellNumber
+        Togoviewcontroller.isInfoEditing = isInfoEditing
         //mozi = hensyuu
         print(hensyuu)
             //togoViewController.togo = sender as String
@@ -105,6 +113,10 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
             return true
         
     }
+    
+//    @IBAction func plusButton(){
+//        self.performSegue(withIdentifier: "", sender: <#T##Any?#>)
+//    }
     /*
     // MARK: - Navigation
 

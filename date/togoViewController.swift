@@ -18,12 +18,16 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     var whenSaveArray:[String] = []//whenを表示させる配列
     var hensyuu: String!
     var hensyuuwhen: String!
+    var cellNumber:Int!
+    var isInfoEditing:Bool!
     //var togoData = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(cellNumber)
+        print(isInfoEditing)
         if userdefaults.object(forKey: "togoTitle") == nil{
             print("nakaminaiyo")
         }else{
@@ -40,17 +44,25 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
         }
         
         togoTextField.delegate = self
-        togoTextField.text = hensyuu
-        whenTextField.delegate = self
-        whenTextField.text = hensyuuwhen
-        
-        if hensyuu != nil{
-            print("hensyuu")
-            togoTextField.text = hensyuu
+        if isInfoEditing == true{
+            togoTextField.text = togoSaveArray[cellNumber]
         }
-        if hensyuuwhen != nil{
-            print("hensyuu")
-            whenTextField.text = hensyuuwhen
+        whenTextField.delegate = self
+//        whenTextField.text = hensyuuwhen
+        
+//        if hensyuu != nil{
+//            print("hensyuu")
+//            togoTextField.text = togoSaveArray[cellNumber]
+//        }
+//        if hensyuuwhen != nil{
+//            print("hensyuu")
+//            whenTextField.text = hensyuuwhen
+//        }
+        if cellNumber == nil{
+            
+        }
+        if isInfoEditing == true{
+            togoTextField.text = togoSaveArray[cellNumber]
         }
         
        /* if userdefaults.object(forKey: "whenTitle") != nil{
@@ -66,25 +78,28 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     }
     
     @IBAction func saveTogo(){
-        if hensyuu == nil{
-            //print(hensyuu)
+        if isInfoEditing == false{
+            print("保存します")
             togoSaveArray.append(togoTextField.text!)
             userdefaults.set(togoSaveArray, forKey: "togoTitle")//
             whenSaveArray.append(whenTextField.text!)
             userdefaults.set(whenSaveArray, forKey: "whenTitle")
-            self.navigationController?.popViewController(animated: true)
-        }else if hensyuu != nil{
-            //print(hensyuu)
-            let index = togoSaveArray.index(of: hensyuu)
-           // let whenindex = whenSaveArray.index(of:hensyuuwhen)
-            togoSaveArray.remove(at: (index)!)
-           // whenSaveArray.remove(at: (whenindex)!)
-            togoSaveArray.insert(togoTextField.text!, at: index!)
-           // whenSaveArray.insert(whenTextField.text!, at: index!)
-            userdefaults.set(togoSaveArray, forKey: "togoTitle")
-         //   userdefaults.set(whenSaveArray, forKey: "whenTitle")
             self.dismiss(animated: true, completion: nil)
-            //self.navigationController?.popViewController(animated: true)
+        }else{
+            //print(hensyuu)
+//            let index = togoSaveArray.index(of: hensyuu)
+            //配列の要素の中身をtextFieldの中身に代入する
+            togoSaveArray[cellNumber] = togoTextField.text!
+            userdefaults.set(togoSaveArray, forKey: "togoTitle")
+            
+            //let whenindex = whenSaveArray.index(of:hensyuuwhen)
+            //whenSaveArray.remove(at: (whenindex)!)
+            //whenSaveArray.insert(whenTextField.text!, at: index!)
+            //userdefaults.set(whenSaveArray, forKey: "whenTitle")
+            
+            isInfoEditing = false//編集の内容を初期化する処理を入れる
+//            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
         
        
