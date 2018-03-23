@@ -17,7 +17,7 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     var togoSaveArray:[String] = []//todoを表示させる配列
     var whenSaveArray:[String] = []//whenを表示させる配列
     var hensyuu: String!
-    
+    var hensyuuwhen: String!
     //var togoData = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
@@ -31,19 +31,32 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
             togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
             togoTextField.text = userdefaults.object(forKey: "togoTitle") as? String
         }
+        if userdefaults.object(forKey: "whenTitle") == nil{
+            print("nakaminaiyo")
+        }else{
+            print(hensyuu)
+            whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
+            whenTextField.text = userdefaults.object(forKey: "whenTitle") as? String
+        }
         
         togoTextField.delegate = self
         togoTextField.text = hensyuu
+        whenTextField.delegate = self
+        whenTextField.text = hensyuuwhen
         
         if hensyuu != nil{
             print("hensyuu")
             togoTextField.text = hensyuu
         }
-        
-        if userdefaults.object(forKey: "whenTitle") != nil{
-            whenSaveArray = userdefaults.object(forKey: "whenTitle") as! [String]
-            
+        if hensyuuwhen != nil{
+            print("hensyuu")
+            whenTextField.text = hensyuuwhen
         }
+        
+       /* if userdefaults.object(forKey: "whenTitle") != nil{
+            whenSaveArray = userdefaults.object(forKey: "whenTitle") as! [String]
+            whenTextField.text = userdefaults.object(forKey: "whenTitle") as? String
+        }*/
         // Do any additional setup after loading the view.
     }
 
@@ -63,9 +76,13 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
         }else if hensyuu != nil{
             //print(hensyuu)
             let index = togoSaveArray.index(of: hensyuu)
+           // let whenindex = whenSaveArray.index(of:hensyuuwhen)
             togoSaveArray.remove(at: (index)!)
+           // whenSaveArray.remove(at: (whenindex)!)
             togoSaveArray.insert(togoTextField.text!, at: index!)
+           // whenSaveArray.insert(whenTextField.text!, at: index!)
             userdefaults.set(togoSaveArray, forKey: "togoTitle")
+         //   userdefaults.set(whenSaveArray, forKey: "whenTitle")
             self.dismiss(animated: true, completion: nil)
             //self.navigationController?.popViewController(animated: true)
         }
