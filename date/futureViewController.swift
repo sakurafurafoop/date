@@ -8,10 +8,10 @@
 
 import UIKit
 
-class futureViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate{
+class futureViewController: UIViewController,UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate{
     @IBOutlet var table: UITableView!//togoを表示させる配列
     var togoArray: [String] = []//togoを実際に入れる配列
-    var whenArray: [String] = []//whenを保存に入れる配列
+    var whenArray: [String] = []//whenを実際に入れる配列
     var cellNumber:Int!//何こめのセルをタッチしているのか
     var isInfoEditing:Bool = false//新規or編集か判断
     let Userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
@@ -68,6 +68,8 @@ class futureViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",for:indexPath)
         _ = togoArray[indexPath.row]
         cell.textLabel?.text = togoArray[indexPath.row]
+//        _ = whenArray[indexPath.row]
+//        cell.textLabel?.text = whenArray[indexPath.row]
         return cell
     }
     

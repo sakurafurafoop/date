@@ -61,20 +61,23 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     
     //保存ボタンを押した時
     @IBAction func saveTogo(){
-        //新規だったら？配列に要素追加する
-        if isInfoEditing == false{
-            togoSaveArray.append(togoTextField.text!)
-            userdefaults.set(togoSaveArray, forKey: "togoTitle")//
-            whenSaveArray.append(whenTextField.text!)
-            userdefaults.set(whenSaveArray, forKey: "whenTitle")
-            self.dismiss(animated: true, completion: nil)
-        //編集やったら？配列の要素を書き換える
-        }else{
-            togoSaveArray[cellNumber] = togoTextField.text!
-            userdefaults.set(togoSaveArray, forKey: "togoTitle")
-            isInfoEditing = false//編集か新規かを初期化する処理を入れる
-//            self.dismiss(animated: true, completion: nil)
-            self.navigationController?.popViewController(animated: true)
+        //もしtogoTextFieldの中身があるんやったら保存する
+        if togoTextField.text != ""{
+            //新規だったら？配列に要素追加する
+            if isInfoEditing == false{
+                togoSaveArray.append(togoTextField.text!)
+                userdefaults.set(togoSaveArray, forKey: "togoTitle")//
+                whenSaveArray.append(whenTextField.text!)
+                userdefaults.set(whenSaveArray, forKey: "whenTitle")
+                self.dismiss(animated: true, completion: nil)
+                //編集やったら？配列の要素を書き換える
+            }else{
+                togoSaveArray[cellNumber] = togoTextField.text!
+                userdefaults.set(togoSaveArray, forKey: "togoTitle")
+                isInfoEditing = false//編集か新規かを初期化する処理を入れる
+                //            self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
