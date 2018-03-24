@@ -19,28 +19,26 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     var whenSaveArray:[String] = []//whenを表示させる配列
     var cellNumber:Int!//どこのセルを編集しているのか
     var isInfoEditing:Bool!//今のメモは編集中なのか新規なのか
-
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("isInfoEditing:",  isInfoEditing)
+        togoSaveArray = userdefaults.object(forKey: "togoTitle") as! [String]
+        whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
+        togoTextField.delegate = self
+        whenTextField.delegate = self
         //編集の場合元の内容をテキストボックスに表示させる
         if isInfoEditing == true{
             if userdefaults.object(forKey: "togoTitle") != nil{
-                togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
                 togoTextField.text = togoSaveArray[cellNumber]
             }
-            togoTextField.delegate = self
             
             if userdefaults.object(forKey: "whenTitle") != nil{
-                whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
                 whenTextField.text = whenSaveArray[cellNumber]
             }
-            whenTextField.delegate = self
         }
-        
-       
-       
         // Do any additional setup after loading the view.
     }
 
@@ -50,6 +48,11 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     }
     
     
+    //キーボードたたむ
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     //保存ボタンを押した時
     @IBAction func saveTogo(){
@@ -58,11 +61,11 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
             //新規だったら？配列に要素追加する
             if isInfoEditing == false{
                 togoSaveArray.append(togoTextField.text!)
-                userdefaults.set(togoSaveArray, forKey: "togoTitle")//
+                userdefaults.set(togoSaveArray, forKey: "togoTitle")
                 whenSaveArray.append(whenTextField.text!)
                 userdefaults.set(whenSaveArray, forKey: "whenTitle")
                 self.dismiss(animated: true, completion: nil)
-                //編集やったら？配列の要素を書き換える
+            //編集やったら？配列の要素を書き換える
             }else{
                 togoSaveArray[cellNumber] = togoTextField.text!
                 userdefaults.set(togoSaveArray, forKey: "togoTitle")
@@ -70,6 +73,16 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
                 //            self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
             }
+        //もしtogoTextFieldの中身がないんやったらalertを出す
+        }else{
+            let alert:UIAlertController = UIAlertController(title:"どこに行きますか？",message:"中身を書いてください",preferredStyle:.alert)
+            alert.addAction(
+                UIAlertAction(
+                    title:"OK",
+                    style:.default
+                )
+            )
+            present(alert,animated: true,completion: nil)
         }
     }
     
