@@ -24,31 +24,23 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if userdefaults.object(forKey: "togoTitle") == nil{
-            print("nakaminaiyo")
-        }else{
-            togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
-            togoTextField.text = userdefaults.object(forKey: "togoTitle") as? String
-        }
-        
-        if userdefaults.object(forKey: "whenTitle") == nil{
-            print("nakaminaiyo")
-        }else{
-            whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
-            whenTextField.text = userdefaults.object(forKey: "whenTitle") as? String
-        }
-        
-        togoTextField.delegate = self
+        //編集の場合元の内容をテキストボックスに表示させる
         if isInfoEditing == true{
-            print(togoSaveArray[cellNumber])
-            togoTextField.text = togoSaveArray[cellNumber]
+            if userdefaults.object(forKey: "togoTitle") != nil{
+                togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
+                togoTextField.text = togoSaveArray[cellNumber]
+            }
+            togoTextField.delegate = self
+            
+            if userdefaults.object(forKey: "whenTitle") != nil{
+                whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
+                whenTextField.text = whenSaveArray[cellNumber]
+            }
+            whenTextField.delegate = self
         }
-        whenTextField.delegate = self
+        
        
-       /* if userdefaults.object(forKey: "whenTitle") != nil{
-            whenSaveArray = userdefaults.object(forKey: "whenTitle") as! [String]
-            whenTextField.text = userdefaults.object(forKey: "whenTitle") as? String
-        }*/
+       
         // Do any additional setup after loading the view.
     }
 
