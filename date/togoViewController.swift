@@ -64,14 +64,16 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
                 userdefaults.set(togoSaveArray, forKey: "togoTitle")
                 whenSaveArray.append(whenTextField.text!)
                 userdefaults.set(whenSaveArray, forKey: "whenTitle")
-                self.dismiss(animated: true, completion: nil)
+//                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             //編集やったら？配列の要素を書き換える
             }else{
                 togoSaveArray[cellNumber] = togoTextField.text!
                 userdefaults.set(togoSaveArray, forKey: "togoTitle")
+                whenSaveArray[cellNumber] = whenTextField.text!
+                userdefaults.set(whenSaveArray, forKey: "whenTitle")
                 isInfoEditing = false//編集か新規かを初期化する処理を入れる
-                //            self.dismiss(animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }
         //もしtogoTextFieldの中身がないんやったらalertを出す
         }else{
