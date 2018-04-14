@@ -21,6 +21,7 @@
 		18F62FDA2043F9C40060231A /* アートボード 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F62FD62043F9C40060231A /* アートボード 1.png */; };
 		18F62FDC2043FD6A0060231A /* futureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62FDB2043FD6A0060231A /* futureViewController.swift */; };
 		18F62FDE2043FDAC0060231A /* togoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62FDD2043FDAC0060231A /* togoViewController.swift */; };
+		18FB873D20690973001A310E /* togoTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FB873C20690973001A310E /* togoTableView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		18F62FD62043F9C40060231A /* アートボード 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "アートボード 1.png"; sourceTree = "<group>"; };
 		18F62FDB2043FD6A0060231A /* futureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = futureViewController.swift; sourceTree = "<group>"; };
 		18F62FDD2043FDAC0060231A /* togoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = togoViewController.swift; sourceTree = "<group>"; };
+		18FB873C20690973001A310E /* togoTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = togoTableView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		18F62FA42043F94B0060231A /* date */ = {
 			isa = PBXGroup;
 			children = (
+				18FB873C20690973001A310E /* togoTableView.xib */,
 				184873E6204EB4C7008A05F8 /* Bodrum.ttf */,
 				18F62FD62043F9C40060231A /* アートボード 1.png */,
 				18F62FD32043F9C40060231A /* アートボード 2.png */,
@@ -256,6 +259,7 @@
 				18F62FB02043F94B0060231A /* LaunchScreen.storyboard in Resources */,
 				18F62FAD2043F94B0060231A /* Assets.xcassets in Resources */,
 				18F62FD92043F9C40060231A /* アートボード 4.png in Resources */,
+				18FB873D20690973001A310E /* togoTableView.xib in Resources */,
 				18F62FD72043F9C40060231A /* アートボード 2.png in Resources */,
 				18F62FDA2043F9C40060231A /* アートボード 1.png in Resources */,
 				18F62FD82043F9C40060231A /* アートボード 3.png in Resources */,

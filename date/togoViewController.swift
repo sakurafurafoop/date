@@ -15,8 +15,8 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     //@IBOutlet var togoText: UILabel!//
     @IBOutlet var whenTextField: UITextField!//whenを入れるTextField
     @IBOutlet var imageView:UIImageView!
-    var togoSaveArray:[String] = []// todoを表示させる配列
-    var whenSaveArray:[String] = []//whenを表示させる配列
+    var togoSaveArray:[String?] = []// todoを表示させる配列
+    var whenSaveArray:[String?] = []//whenを表示させる配列
     var cellNumber:Int!//どこのセルを編集しているのか
     var isInfoEditing:Bool!//今のメモは編集中なのか新規なのか
     
@@ -25,8 +25,15 @@ class togoViewController: UIViewController,UIImagePickerControllerDelegate,UITex
     override func viewDidLoad() {
         super.viewDidLoad()
         print("isInfoEditing:",  isInfoEditing)
-        togoSaveArray = userdefaults.object(forKey: "togoTitle") as! [String]
-        whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
+        if userdefaults.object(forKey: "togoTitle") != nil{
+            togoSaveArray = userdefaults.object(forKey:"togoTitle") as! [String]
+            togoTextField.text = userdefaults.object(forKey: "togoTitle") as? String
+        }
+        
+        if userdefaults.object(forKey: "whenTitle") != nil{
+            whenSaveArray = userdefaults.object(forKey:"whenTitle") as! [String]
+            whenTextField.text = userdefaults.object(forKey: "whenTitle") as? String
+        }
         togoTextField.delegate = self
         whenTextField.delegate = self
         //編集の場合元の内容をテキストボックスに表示させる

@@ -11,7 +11,9 @@ import UIKit
 class futureViewController: UIViewController,UITableViewDataSource, UITableViewDelegate,UITextFieldDelegate{
     @IBOutlet var table: UITableView!//togoを表示させる配列
     var togoArray: [String] = []//togoを実際に入れる配列
+//    @IBOutlet var togoLabel:UILabel!//togoを表示するラベル
     var whenArray: [String] = []//whenを実際に入れる配列
+//    @IBOutlet var whenLabel:UILabel!//whenを表示するラベル
     var cellNumber:Int!//何こめのセルをタッチしているのか
     var isInfoEditing:Bool = false//新規or編集か判断
     let Userdefaults: UserDefaults = UserDefaults.standard//ユーザーデフォルトにアクセス
@@ -78,9 +80,11 @@ class futureViewController: UIViewController,UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             togoArray.remove(at: indexPath.row)
+            whenArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         Userdefaults.set(togoArray, forKey: "togoTitle")//
+        Userdefaults.set(whenArray, forKey: "whenTitle")
     }
     
     
